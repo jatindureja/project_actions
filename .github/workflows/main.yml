@@ -1,0 +1,23 @@
+name: inital
+on: push
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: npm-install
+        run: npm lint
+  second-job:
+    needs: first_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: npm test
+        run: npm test
+  third-job:
+    needs: second-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: npm build
+        run: npm build
+    
+        
+    
