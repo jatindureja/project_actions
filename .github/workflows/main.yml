@@ -4,20 +4,25 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout-code
+        uses: actions/checkout@v3
+        
       - name: npm-install
         run: npm install
+      - name: npm-lint
+        run: npm run lint
   second-job:
     needs: first_job
     runs-on: ubuntu-latest
     steps:
-      - name: npm test
-        run: npm test
+      - name: npm run test
+        run: npm run test
   third-job:
     needs: second-job
     runs-on: ubuntu-latest
     steps:
       - name: npm build
-        run: npm build
+        run: npm run build
     
         
     
